@@ -17,11 +17,10 @@
 
 using namespace std;
 
-// used for merging the operations into one
 struct index {
     short x;
     short y;
-    bool c; // whether len-1 should be used to calculate final position
+    bool c; // whether len-1 is present as a constant in the index
 };
 
 inline void swapIndexes(index & A, index & B) {
@@ -51,7 +50,7 @@ class matrix {
         void transform(void); // perform the final operation on the matrix
     public:
         void assign(ifstream*); // assign values to the object using stdin
-        void process(void); // combine the operations into one, single operation
+        void process(void); // combine the operations into one single operation
 
         void print(ofstream*); // output to file
         void print(void); // output to stdout
@@ -162,7 +161,7 @@ int main(int argc, char *argv[])
     input.open(INPUT_FILE);
     if (!input) { cerr << "Nie udalo sie otworzyc pliku z danymi wejsciowymi!\n"; return -2; }
 
-    unsigned int testCount; // total number of tests/matrixes to process (<20)
+    unsigned int testCount; // total number of tests/matrixes to process
 
     input >> testCount;
     matrix matrixes[testCount]; // array of objects of class matrix
